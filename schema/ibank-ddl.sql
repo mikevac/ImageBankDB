@@ -12,7 +12,7 @@ CREATE SEQUENCE ibank.user_id_seq START 1;
 CREATE TABLE ibank.user
 (
 	user_id				integer 	 not null default nextval('ibank.user_id_seq'),
-	handle              varchar(200) not null,
+	user_name           varchar(200) not null,
 	first_name			varchar(100) not null,
 	last_name 			varchar(100) not null,
 	email_address 		varchar(500) not null,
@@ -132,4 +132,8 @@ CREATE TABLE ibank.doc_2_tag
 	primary key(doc_2_tag_id)
 );
 
-
+GRANT SELECT ON ALL TABLES IN SCHEMA ibank to ibankuser;
+GRANT INSERT  ON ALL TABLES IN SCHEMA ibank to ibankuser;
+GRANT UPDATE ON ALL TABLES IN SCHEMA ibank to ibankuser;
+GRANT DELETE ON ALL TABLES IN SCHEMA ibank to ibankuser;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA ibank to ibankuser;
