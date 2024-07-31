@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog changeLogId="ib-cl-01"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+	<!-- Change set for all dialects of database -->
+	<changeSet author="Michael Vaccaro" id="ib-cs-01">
+		<createTable tableName="user">
+			<column name="user_id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="user_name" type="varchar(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="first_name" type="varchar(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_name" type="varchar(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email_address" type="varchar(500)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="varchar(64)">
+				<constraints nullable="false" />
+			</column>
+			<column name="active" type="boolean" defaultValue="false">
+				<constraints nullable="false" />
+			</column>
+			<column name="deleted" type="boolean" defaultValue="false">
+				<constraints nullable="false" />
+			</column>
+			<column name="time_zone" type="varchar(3)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<createIndex tableName="user" indexName="user_idx">
+			<column name="last_name" />
+			<column name="first_name" />
+		</createIndex>
+
+	</changeSet>
+
+</databaseChangeLog>
